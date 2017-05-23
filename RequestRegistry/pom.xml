@@ -15,7 +15,6 @@
 	<dependencies>
 	</dependencies>
 
-
 	<modules>
 		<module>RequestRegistry-Model</module>
 		<module>RequestRegistry-Persist</module>
