@@ -8,6 +8,6 @@
 		<artifactId>RequestRegistry</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-  <artifactId>RequestRegistry-Model</artifactId>
+	<artifactId>RequestRegistry-Model</artifactId>
 	<name>RequestRegistry-Model</name>
 </project>

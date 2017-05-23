@@ -8,14 +8,15 @@
 		<artifactId>RequestRegistry</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-  <artifactId>RequestRegistry-Persist</artifactId>
+	<artifactId>RequestRegistry-Persist</artifactId>
 	<name>RequestRegistry-Persist</name>
 
-  <dependencies>
-    <dependency>
-     <groupId>hu.iit.uni.miskolc</groupId>
-		<artifactId>RequestRegistry-Model</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
-    </dependency>
-  </dependencies>
+	<dependencies>
+		<!-- Model module -->
+		<dependency>
+			<groupId>hu.iit.uni.miskolc</groupId>
+			<artifactId>RequestRegistry-Model</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+	</dependencies>
 </project>
