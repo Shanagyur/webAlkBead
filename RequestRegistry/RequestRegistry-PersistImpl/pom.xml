@@ -10,6 +10,7 @@
 	</parent>
   <artifactId>RequestRegistry-PersistImpl</artifactId>
 	<name>RequestRegistry-PersistImpl</name>
+	
 	<dependencies>
 		<!-- Persist module -->
 		<dependency>
@@ -18,4 +19,5 @@
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
+	
 </project>
