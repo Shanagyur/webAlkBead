@@ -4,8 +4,8 @@ public class Details {
 	
 	private String firstName;
 	private String lastName;
-	private String neptunID;
 	private String email;
+	private Settlement settlement;
 	
 	public Details() {
 	}
@@ -26,19 +26,19 @@ public class Details {
 		this.lastName = lastName;
 	}
 
-	public String getNeptunID() {
-		return neptunID;
-	}
-
-	public void setNeptunID(String neptunID) {
-		this.neptunID = neptunID;
-	}
-
 	public String getEmail() {
 		return email;
 	}
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public Settlement getSettlement() {
+		return settlement;
+	}
+
+	public void setSettlement(Settlement settlement) {
+		this.settlement = settlement;
 	}
 }
