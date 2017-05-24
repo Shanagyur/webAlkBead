@@ -12,12 +12,22 @@ public class RequestStatusConverter implements AttributeConverter<RequestStatus,
 	}
 
 	@Override
-	public String convertToDatabaseColumn(RequestStatus attribute) {
-		return null;
+	public String convertToDatabaseColumn(RequestStatus requestStatus) {
+		return requestStatus.toString();
 	}
 
 	@Override
-	public RequestStatus convertToEntityAttribute(String dbData) {
-		return null;
+	public RequestStatus convertToEntityAttribute(String requestStatusValue) {
+		RequestStatus requestStatus = null;
+		
+		if(RequestStatus.REQUEST_ACCEPT.toString().equals(requestStatusValue)) {
+			requestStatus = RequestStatus.REQUEST_ACCEPT;
+		} else if(RequestStatus.REQUEST_DENIED.toString().equals(requestStatusValue)) {
+			requestStatus = RequestStatus.REQUEST_DENIED;
+		} else if(RequestStatus.REQUEST_PENDING.toString().equals(requestStatusValue)) {
+			requestStatus = RequestStatus.REQUEST_PENDING;
+		}
+		
+		return requestStatus;
 	}
 }
