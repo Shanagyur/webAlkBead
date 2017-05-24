@@ -5,7 +5,7 @@ import hu.iit.uni.miskolc.RequestRegistry.PersistImpl.daoImpl.entity.DetailsEnti
 
 public class DetailsEntityConverter {
 
-	public DetailsEntityConverter() {
+	private DetailsEntityConverter() {
 	}
 
 	public static Details convertDetailsEntityToModel(DetailsEntity detailsEntity) {
