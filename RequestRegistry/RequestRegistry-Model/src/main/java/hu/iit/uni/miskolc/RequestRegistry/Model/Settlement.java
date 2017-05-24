@@ -2,12 +2,21 @@ package hu.iit.uni.miskolc.RequestRegistry.Model;
 
 public class Settlement {
 	
+	private int id;
 	private int zip;
 	private String city;
 	private String street;
 	private String streetNumber;
 	
 	public Settlement() {
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public int getZip() {
