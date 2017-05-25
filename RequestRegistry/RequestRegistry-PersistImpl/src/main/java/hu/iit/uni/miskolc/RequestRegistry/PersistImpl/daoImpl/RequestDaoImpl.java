@@ -19,6 +19,7 @@ import hu.iit.uni.miskolc.RequestRegistry.PersistImpl.daoImpl.converter.RequestE
 import hu.iit.uni.miskolc.RequestRegistry.PersistImpl.daoImpl.converter.TemplateEntityConverter;
 import hu.iit.uni.miskolc.RequestRegistry.PersistImpl.daoImpl.converter.UserEntityConverter;
 import hu.iit.uni.miskolc.RequestRegistry.PersistImpl.daoImpl.entity.RequestEntity;
+import hu.iit.uni.miskolc.RequestRegistry.PersistImpl.daoImpl.entity.TemplateEntity;
 
 @Repository
 @Transactional
@@ -49,6 +50,12 @@ public class RequestDaoImpl implements RequestDao {
 		
 		return RequestEntityConverter.convertRequestEntitiesToModels(requestEntities);
 	}
+	
+	@Override
+	public void makeRemarks(Request request, String newComment) throws InvalidRequestException {
+		RequestEntity requestEntity = this.entityManager.find(RequestEntity.class, request.getId());
+		requestEntity.setComment(newComment);
+	}
 
 	@Override
 	public List<Request> listRequestByComment(String comment) throws InvalidRequestException {
@@ -61,6 +68,12 @@ public class RequestDaoImpl implements RequestDao {
 		return RequestEntityConverter.convertRequestEntitiesToModels(requestEntities);
 	}
 
+	@Override
+	public void makeVerdict(Request request, RequestStatus newStatus) throws InvalidRequestException {
+		RequestEntity requestEntity = this.entityManager.find(RequestEntity.class, request.getId());
+		requestEntity.setStatus(newStatus);
+	}
+	
 	@Override
 	public List<Request> listRequestByStatus(RequestStatus status) throws InvalidRequestException {
 		String select = "SELECT r FROM Request r WHERE r.status = :status";

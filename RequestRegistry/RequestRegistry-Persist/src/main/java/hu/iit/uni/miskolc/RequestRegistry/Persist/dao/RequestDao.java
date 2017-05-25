@@ -14,7 +14,11 @@ public interface RequestDao {
 	
 	List<Request> listRequestByUser(User user) throws InvalidRequestException, InvalidUserException;
 	
+	void makeRemarks(Request request, String newComment) throws InvalidRequestException;
+	
 	List<Request> listRequestByComment(String comment) throws InvalidRequestException;
+	
+	void makeVerdict(Request request, RequestStatus newStatus) throws InvalidRequestException;
 	
 	List<Request> listRequestByStatus(RequestStatus status) throws InvalidRequestException;
 	
