@@ -1,11 +1,9 @@
 package hu.iit.uni.miskolc.RequestRegistry.ServiceImpl;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.util.concurrent.SettableListenableFuture;
 
 import hu.iit.uni.miskolc.RequestRegistry.Model.Details;
 import hu.iit.uni.miskolc.RequestRegistry.Model.Settlement;
-import hu.iit.uni.miskolc.RequestRegistry.Model.User;
 import hu.iit.uni.miskolc.RequestRegistry.Persist.dao.UserDao;
 import hu.iit.uni.miskolc.RequestRegistry.Persist.exception.InvalidUserException;
 import hu.iit.uni.miskolc.RequestRegistry.Service.UserService;
@@ -15,6 +13,9 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private UserDao userDao;
 	
+	public UserServiceImpl() {
+	}
+
 	@Override
 	public void modifyUserDetails(
 			String username, String firstname, String lastname, 
