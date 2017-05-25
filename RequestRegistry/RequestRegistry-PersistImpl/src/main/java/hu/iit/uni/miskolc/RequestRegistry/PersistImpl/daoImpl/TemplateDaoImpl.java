@@ -1,4 +1,4 @@
-package hu.iit.uni.miskolc.RequestRegistry.PersistImpl;
+package hu.iit.uni.miskolc.RequestRegistry.PersistImpl.daoImpl;
 
 
 import javax.persistence.EntityManager;
