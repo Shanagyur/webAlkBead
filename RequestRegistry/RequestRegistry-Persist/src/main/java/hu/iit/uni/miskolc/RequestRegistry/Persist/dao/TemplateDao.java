@@ -5,5 +5,7 @@ import hu.iit.uni.miskolc.RequestRegistry.Persist.exception.InvalidTemplateExcep
 
 public interface TemplateDao {
 
+	Template getTemplateByName(String templateName);
+	
 	void createTemplate(Template template) throws InvalidTemplateException;
 }
