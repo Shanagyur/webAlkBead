@@ -18,4 +18,15 @@ public class DetailsEntityConverter {
 		
 		return details;
 	}
+	
+	public static DetailsEntity convertDetailsToEntity(Details details) {
+		DetailsEntity detailsEntity = new DetailsEntity();
+
+		detailsEntity.setFirstName(details.getFirstName());
+		detailsEntity.setLastName(details.getLastName());
+		detailsEntity.setEmail(details.getEmail());
+		detailsEntity.setSettlement(SettlementEntityConverter.convertSettlementToEntity(details.getSettlement()));
+		
+		return detailsEntity;
+	}
 }

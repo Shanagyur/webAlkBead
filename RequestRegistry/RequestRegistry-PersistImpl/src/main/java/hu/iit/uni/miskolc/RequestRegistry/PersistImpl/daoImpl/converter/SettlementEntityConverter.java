@@ -19,4 +19,16 @@ public class SettlementEntityConverter {
 		
 		return settlement;
 	}
+	
+	public static SettlementEntity convertSettlementToEntity(Settlement settlement) {
+		SettlementEntity settlementEntity = new SettlementEntity();
+		
+		settlementEntity.setId(settlement.getId());
+		settlementEntity.setZip(settlement.getZip());
+		settlementEntity.setCity(settlement.getCity());
+		settlementEntity.setStreet(settlement.getStreet());
+		settlementEntity.setStreetNumber(settlement.getStreetNumber());
+		
+		return settlementEntity;
+	}
 }
