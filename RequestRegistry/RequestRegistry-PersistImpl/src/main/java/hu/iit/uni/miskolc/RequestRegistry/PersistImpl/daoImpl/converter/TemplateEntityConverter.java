@@ -16,4 +16,13 @@ public class TemplateEntityConverter {
 		
 		return template;
 	}
+	
+	public static TemplateEntity convertTemplateToEntity(Template template) {
+		TemplateEntity templateEntity = new TemplateEntity();
+		
+		templateEntity.setName(template.getName());
+		templateEntity.setDescription(template.getDescription());
+		
+		return templateEntity;
+	}
 }

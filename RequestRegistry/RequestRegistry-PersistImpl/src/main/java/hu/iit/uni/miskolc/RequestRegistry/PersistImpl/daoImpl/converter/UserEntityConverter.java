@@ -18,4 +18,15 @@ public class UserEntityConverter {
 		
 		return user;
 	}
+	
+	public static UserEntity convertUserToEntity(User user) {
+		UserEntity userEntity = new UserEntity();
+		
+		userEntity.setUsername(user.getUsername());
+		userEntity.setPassword(user.getPassword());
+		userEntity.setEnabled(user.isEnabled());
+		userEntity.setDetails(DetailsEntityConverter.convertDetailsToEntity(user.getDetails()));
+		
+		return userEntity;
+	}
 }
