@@ -4,11 +4,12 @@ import java.util.List;
 
 import hu.iit.uni.miskolc.RequestRegistry.Model.Request;
 import hu.iit.uni.miskolc.RequestRegistry.Persist.exception.InvalidRequestException;
+import hu.iit.uni.miskolc.RequestRegistry.Persist.exception.InvalidTemplateException;
 import hu.iit.uni.miskolc.RequestRegistry.Persist.exception.InvalidUserException;
 
 public interface RequestService {
 
-	void submitRequest(String username) throws InvalidRequestException;
+	void submitRequest(String username, String templateName) throws InvalidRequestException, InvalidUserException, InvalidTemplateException;
 	
 	List<Request> listRequestByUser(String username) throws InvalidUserException;
 	
