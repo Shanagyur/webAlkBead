@@ -16,6 +16,16 @@ public class TemplateServiceImpl implements TemplateService {
 	
 	public TemplateServiceImpl() {
 	}
+	
+	@Override
+	public Template getTemplateByName(String templateName) throws InvalidTemplateException {
+		if(this.templateDao.getTemplateByName(templateName) == null) {
+			throw new InvalidTemplateException();
+		} else {
+			Template template = this.getTemplateByName(templateName);
+			return template;
+		}
+	}
 
 	@Override
 	public void createTemplate(String name, String description) throws InvalidTemplateException {
