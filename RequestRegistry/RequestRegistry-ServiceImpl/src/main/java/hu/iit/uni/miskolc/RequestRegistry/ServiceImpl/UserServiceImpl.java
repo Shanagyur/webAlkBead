@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import hu.iit.uni.miskolc.RequestRegistry.Model.Details;
 import hu.iit.uni.miskolc.RequestRegistry.Model.Settlement;
+import hu.iit.uni.miskolc.RequestRegistry.Model.User;
 import hu.iit.uni.miskolc.RequestRegistry.Persist.dao.UserDao;
 import hu.iit.uni.miskolc.RequestRegistry.Persist.exception.InvalidUserException;
 import hu.iit.uni.miskolc.RequestRegistry.Service.UserService;
@@ -14,6 +15,16 @@ public class UserServiceImpl implements UserService {
 	private UserDao userDao;
 	
 	public UserServiceImpl() {
+	}
+	
+	@Override
+	public User getUserById(String username) throws InvalidUserException {
+		if(this.userDao.getUserById(username) == null) {
+			throw new InvalidUserException();
+		} else {
+			User user = this.userDao.getUserById(username);
+			return user;
+		}
 	}
 
 	@Override
