@@ -21,6 +21,7 @@ public class RequestEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "ID")
 	private int id;
 	
 	@OneToOne(fetch = FetchType.EAGER)

@@ -1,0 +1,49 @@
+create database requestregistry;
+
+use requestregistry;
+
+CREATE TABLE Settlements(
+	ID INT PRIMARY KEY AUTO_INCREMENT,
+	Zip INT NOT NULL,
+	City VARCHAR(200) NOT NULL,
+	Street VARCHAR(200) NOT NULL,
+	StreetNumber VARCHAR(200) NOT NULL
+);
+
+CREATE TABLE Details(
+	Email VARCHAR(200) PRIMARY KEY,
+	FirstName VARCHAR(200) NOT NULL,
+	LastName VARCHAR(200) NOT NULL,
+	Settlement INT NOT NULL,
+	FOREIGN KEY (Settlement) REFERENCES Settlements(ID)
+);
+
+CREATE TABLE Users(
+	Username VARCHAR(200) PRIMARY KEY,
+	Password VARCHAR(200) NOT NULL,
+	Enabled BOOLEAN NOT NULL,
+	DetailsID VARCHAR(200) NOT NULL,
+	FOREIGN KEY (DetailsID) REFERENCES Details(Email)
+);
+
+CREATE TABLE UserRoles(
+	ID INT PRIMARY KEY AUTO_INCREMENT,
+	Username VARCHAR(200) NOT NULL,
+	Role VARCHAR(200) NOT NULL,
+	FOREIGN KEY (Username) REFERENCES Users(Username)
+);
+
+CREATE TABLE Templates(
+	Name VARCHAR(200) PRIMARY KEY,
+	Description VARCHAR(200) NOT NULL
+);
+
+CREATE TABLE Requests(
+	ID INT PRIMARY KEY AUTO_INCREMENT,
+	UserID VARCHAR(200) NOT NULL,
+	TemplateName VARCHAR(200) NOT NULL,
+	Comment VARCHAR(200),
+	Status VARCHAR(200) NOT NULL,
+	FOREIGN KEY (UserID) REFERENCES Users(Username),
+	FOREIGN KEY (TemplateName) REFERENCES Templates(Name)
+);
