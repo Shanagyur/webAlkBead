@@ -16,9 +16,9 @@ INSERT INTO Users(Username, Password, Enabled, DetailsID) VALUES
 	('user2', 'user2', true, 3);
 	
 INSERT INTO UserRoles(ID, Username, Role) VALUES 
-	(1, 'user', 'STUDENT_ROLE'),
-	(2, 'user1', 'ADMIN_ROLE'),
-	(3, 'user2', 'TEACHER_ROLE');
+	(1, 'user', 'ROLE_STUDENT'),
+	(2, 'user1', 'ROLE_ADMIN'),
+	(3, 'user2', 'ROLE_TEACHER');
 	
 INSERT INTO Templates(Name, Description) VALUES 
 	('Megajánlott jegy', 'Megajánlott jegy igénylése'),
