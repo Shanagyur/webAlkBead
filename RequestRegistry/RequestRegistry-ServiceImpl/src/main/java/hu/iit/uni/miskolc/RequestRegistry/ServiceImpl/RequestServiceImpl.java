@@ -16,6 +16,7 @@ import hu.iit.uni.miskolc.RequestRegistry.Persist.exception.InvalidUserException
 import hu.iit.uni.miskolc.RequestRegistry.Service.RequestService;
 import hu.iit.uni.miskolc.RequestRegistry.Service.TemplateService;
 import hu.iit.uni.miskolc.RequestRegistry.Service.UserService;
+import hu.iit.uni.miskolc.RequestRegistry.ServiceImpl.converter.RequestStatusConverter;
 
 @Service
 public class RequestServiceImpl implements RequestService {
@@ -47,37 +48,45 @@ public class RequestServiceImpl implements RequestService {
 
 	@Override
 	public List<Request> listRequestByUser(String username) throws InvalidUserException {
-		// TODO Auto-generated method stub
-		return null;
+		User user = this.userService.getUserById(username);
+		try {
+			return this.requestDao.listRequestByUser(user);
+		} catch (InvalidRequestException e) {
+			throw new InvalidUserException();
+		}
 	}
 
 	@Override
 	public void makeRemarks(int requestId, String newComment) throws InvalidRequestException {
-		// TODO Auto-generated method stub
-
+		Request request = this.requestDao.requestById(requestId);
+		this.requestDao.makeRemarks(request, newComment);
 	}
 
 	@Override
-	public List<Request> listRequestByComment(String comment) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Request> listRequestByComment(String comment) throws InvalidRequestException {
+		return this.requestDao.listRequestByComment(comment);
 	}
 
 	@Override
 	public void makeVerdict(int requestId, String newStatus) throws InvalidRequestException {
-		// TODO Auto-generated method stub
-
+		Request request = this.requestDao.requestById(requestId);
+		RequestStatus status = RequestStatusConverter.convertStringToRequestStatus(newStatus);
+		
+		this.requestDao.makeVerdict(request, status);
 	}
 
 	@Override
-	public List<Request> listRequestByStatus(String status) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Request> listRequestByStatus(String status) throws InvalidRequestException {
+		RequestStatus requestStatus = RequestStatusConverter.convertStringToRequestStatus(status);
+		
+		return this.requestDao.listRequestByStatus(requestStatus);
 	}
 
 	@Override
 	public void forwardRequest(String username, int requestId) throws InvalidUserException, InvalidRequestException {
-		// TODO Auto-generated method stub
-
+		User destinationUser = this.userService.getUserById(username);
+		Request request = this.requestDao.requestById(requestId);
+		
+		this.requestDao.forwardRequest(destinationUser, request);
 	}
 }
