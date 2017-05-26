@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -49,8 +50,8 @@ public class StudentController {
 		return authentication.getName(); 
 	}
 	
-	@RequestMapping(value = "/submit", method = RequestMethod.POST)
-	public void submitRequest(@RequestBody String templateName) throws InvalidRequestException, InvalidUserException, InvalidTemplateException {
+	@RequestMapping(value = "/submit/{templateName}", method = RequestMethod.POST)
+	public void submitRequest(@PathVariable("templateName") String templateName) throws InvalidRequestException, InvalidUserException, InvalidTemplateException {
 		String username = getUsername();
 		this.requestService.submitRequest(username, templateName);
 	}
