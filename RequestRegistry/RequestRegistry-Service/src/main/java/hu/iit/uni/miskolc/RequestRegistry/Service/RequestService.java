@@ -19,7 +19,7 @@ public interface RequestService {
 	
 	void makeVerdict(int requestId, String newStatus) throws InvalidRequestException;
 	
-	List<Request> listRequestByStatus(String status);
+	List<Request> listRequestByStatus(String status) throws InvalidRequestException;
 	
 	void forwardRequest(String username, int requestId) throws InvalidUserException, InvalidRequestException;
 }
