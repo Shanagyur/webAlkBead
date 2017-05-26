@@ -90,4 +90,11 @@ public class RequestDaoImpl implements RequestDao {
 		RequestEntity requestEntity = this.entityManager.find(RequestEntity.class, request.getId());
 		requestEntity.setUser(UserEntityConverter.convertUserToEntity(destinationUser));
 	}
+
+	@Override
+	public Request requestById(int requestId) {
+		RequestEntity requestEntity = this.entityManager.find(RequestEntity.class, requestId);
+	
+		return RequestEntityConverter.convertRequestEntityToModel(requestEntity);
+	}
 }

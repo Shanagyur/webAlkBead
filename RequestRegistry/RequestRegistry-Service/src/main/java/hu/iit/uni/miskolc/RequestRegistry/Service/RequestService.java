@@ -15,7 +15,7 @@ public interface RequestService {
 	
 	void makeRemarks(int requestId, String newComment) throws InvalidRequestException;
 	
-	List<Request> listRequestByComment(String comment);
+	List<Request> listRequestByComment(String comment) throws InvalidRequestException;
 	
 	void makeVerdict(int requestId, String newStatus) throws InvalidRequestException;
 	

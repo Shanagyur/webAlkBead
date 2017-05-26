@@ -23,4 +23,6 @@ public interface RequestDao {
 	List<Request> listRequestByStatus(RequestStatus status) throws InvalidRequestException;
 	
 	void forwardRequest(User destinationUser, Request request) throws InvalidRequestException, InvalidUserException;
+	
+	Request requestById(int requestId);
 }
