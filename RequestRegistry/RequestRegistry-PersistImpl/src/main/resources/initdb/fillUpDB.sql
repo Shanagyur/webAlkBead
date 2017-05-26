@@ -16,7 +16,7 @@ INSERT INTO Users(Username, Password, Enabled, DetailsID) VALUES
 	('user2', 'user2', true, 3);
 	
 INSERT INTO UserRoles(ID, Username, Role) VALUES 
-	(1, 'user', 'ROLE_USER'),
+	(1, 'user', 'STUDENT_USER'),
 	(2, 'user1', 'ADMIN_USER'),
 	(3, 'user2', 'TEACHER_USER');
 	
