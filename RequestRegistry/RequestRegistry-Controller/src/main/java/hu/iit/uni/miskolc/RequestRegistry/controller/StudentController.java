@@ -1,5 +1,7 @@
 package hu.iit.uni.miskolc.RequestRegistry.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -8,7 +10,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import hu.iit.uni.miskolc.RequestRegistry.Model.Request;
+import hu.iit.uni.miskolc.RequestRegistry.Persist.exception.InvalidRequestException;
+import hu.iit.uni.miskolc.RequestRegistry.Persist.exception.InvalidTemplateException;
 import hu.iit.uni.miskolc.RequestRegistry.Persist.exception.InvalidUserException;
+import hu.iit.uni.miskolc.RequestRegistry.Service.RequestService;
 import hu.iit.uni.miskolc.RequestRegistry.Service.UserService;
 import hu.iit.uni.miskolc.RequestRegistry.controller.model.UserDetails;
 
@@ -17,6 +23,9 @@ public class StudentController {
 
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private RequestService requestService;
 	
 	public StudentController() {
 	}
@@ -38,5 +47,17 @@ public class StudentController {
 	private String getUsername() {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		return authentication.getName(); 
+	}
+	
+	@RequestMapping(value = "/submit", method = RequestMethod.POST)
+	public void submitRequest(@RequestBody String templateName) throws InvalidRequestException, InvalidUserException, InvalidTemplateException {
+		String username = getUsername();
+		this.requestService.submitRequest(username, templateName);
+	}
+	
+	@RequestMapping(value = "/myRequests", method = RequestMethod.GET)
+	public List<Request> listMyRequests() throws InvalidUserException {
+		String username = getUsername();
+		return this.requestService.listRequestByUser(username);
 	}
 }
