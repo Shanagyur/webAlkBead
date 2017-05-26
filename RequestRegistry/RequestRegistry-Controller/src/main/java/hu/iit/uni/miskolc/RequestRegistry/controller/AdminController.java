@@ -8,7 +8,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import hu.iit.uni.miskolc.RequestRegistry.Model.Template;
+import hu.iit.uni.miskolc.RequestRegistry.Persist.exception.InvalidTemplateException;
 import hu.iit.uni.miskolc.RequestRegistry.Persist.exception.InvalidUserException;
+import hu.iit.uni.miskolc.RequestRegistry.Service.TemplateService;
 import hu.iit.uni.miskolc.RequestRegistry.Service.UserService;
 import hu.iit.uni.miskolc.RequestRegistry.controller.model.UserDetails;
 
@@ -17,6 +20,9 @@ public class AdminController {
 
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private TemplateService templateService;
 
 	public AdminController() {
 	}
@@ -38,5 +44,11 @@ public class AdminController {
 	private String getUsername() {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		return authentication.getName(); 
+	}
+	
+	public void createTemplate(@RequestBody Template template) throws InvalidTemplateException {
+		String name = template.getName();
+		String description = template.getDescription();
+		this.templateService.createTemplate(name, description);
 	}
 }
